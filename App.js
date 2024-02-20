@@ -4,6 +4,7 @@ import ArcoIris from './arco-iris/ArcoIris';
 import Home from './components/Home';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ScreenName from './constants/ScreenName';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,8 +14,8 @@ export default function App() {
       <StatusBar style="auto" />
       <NavigationContainer>
         <Stack.Navigator initialRouteName="HOME">
-          <Stack.Screen name="ARCO_IRIS" component={ArcoIris} options={{ title: 'Arco Iris' }} />
-          <Stack.Screen name="HOME" component={Home} options={{ title: 'Pagina Principal' }} />
+          <Stack.Screen name={ScreenName.ArcoIris} component={ArcoIris} options={{ title: 'Arco Iris' }} />
+          <Stack.Screen name={ScreenName.Home} component={Home} options={{ title: 'Pagina Principal' }} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>
