@@ -1,12 +1,19 @@
 import React from 'react';
 import { Button, View, StyleSheet, Text, TextInput } from 'react-native';
 import ScreenName from '../constants/ScreenName';
+import AuthContext from '../context/AuthContext';
 
 export default function Entrar(props) {
   const [state, setState] = React.useState({
     email: '',
     senha: '',
   });
+
+  const { entrar } = React.useContext(AuthContext);
+
+  function onEntrarPress() {
+    entrar();
+  }
 
   return (
     <View>
@@ -37,6 +44,13 @@ export default function Entrar(props) {
           value={state.senha}
           onChangeText={(text) => setState({ ...state, senha: text })}
           maxLength={15}
+        />
+      </View>
+
+      <View style={{ padding: 8 }}>
+        <Button
+          title="Entrar"
+          onPress={onEntrarPress}
         />
       </View>
 
