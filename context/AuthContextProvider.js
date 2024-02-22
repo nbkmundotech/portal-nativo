@@ -4,9 +4,11 @@ import * as SecureStore from 'expo-secure-store';
 
 export default function AuthContextProvider(props) {
   const [autenticado, setAutenticado] = React.useState(false);
+  const [carregando, setCarregando] = React.useState(true);
 
   const authContext = {
     autenticado,
+    carregando,
     async entrar(usuario) {
       // enviaria informacoes de `usuario` para backend de autenticacao, para conferir se esta valido
 
@@ -34,6 +36,7 @@ export default function AuthContextProvider(props) {
       } catch (error) {
         // deixa autenticado false.
       }
+      setCarregando(false);
     })();
   }, []);
 

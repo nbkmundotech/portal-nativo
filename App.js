@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import ArcoIris from './arco-iris/ArcoIris';
 import Home from './components/Home';
 import { NavigationContainer } from '@react-navigation/native';
@@ -18,7 +18,15 @@ const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 function MyApp() {
-  const { autenticado } = useAuth();
+  const { autenticado, carregando } = useAuth();
+
+  if (carregando) {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator />
+      </View>
+    )
+  }
 
   return (
     <View style={styles.container}>
