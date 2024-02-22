@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, View, StyleSheet, Text, TextInput } from 'react-native';
 import ScreenName from '../constants/ScreenName';
-import AuthContext from '../context/AuthContext';
+import useAuth from '../hooks/useAuth';
 
 export default function Entrar(props) {
   const [state, setState] = React.useState({
@@ -9,10 +9,13 @@ export default function Entrar(props) {
     senha: '',
   });
 
-  const { entrar } = React.useContext(AuthContext);
+  const { entrar } = useAuth();
 
   function onEntrarPress() {
-    entrar();
+    entrar({
+      email: state.email,
+      senha: state.senha,
+    });
   }
 
   return (
