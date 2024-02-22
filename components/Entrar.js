@@ -26,6 +26,20 @@ export default function Entrar(props) {
         />
       </View>
 
+      <View style={styles.inputContainer}>
+        <Text style={styles.inputText}>Senha</Text>
+        <TextInput
+          style={styles.textInput}
+          underlineColorAndroid="rgba(0, 0, 0, 0)"
+          autoCapitalize="none"
+          autoCorrect={false}
+          secureTextEntry
+          value={state.senha}
+          onChangeText={(text) => setState({ ...state, senha: text })}
+          maxLength={15}
+        />
+      </View>
+
       <Button title="Cadastrar" onPress={() => props.navigation.navigate(ScreenName.FormularioDeCadastro)} />
     </View>
   );
