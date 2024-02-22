@@ -10,15 +10,15 @@ import RevvistaNativva from './revvista-nativva/RevvistaNativva';
 import Entrar from './components/Entrar';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import FormularioDeCadastro from './formulario-de-cadastro/FormularioDeCadastro';
-import AuthContext from './context/AuthContext';
 import AuthContextProvider from './context/AuthContextProvider';
 import React from 'react';
+import useAuth from './hooks/useAuth';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 function MyApp() {
-  const { autenticado } = React.useContext(AuthContext);
+  const { autenticado } = useAuth();
 
   return (
     <View style={styles.container}>
