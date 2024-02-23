@@ -29,14 +29,9 @@ export default function Entrar(props) {
       <LoginForm
         fields={state}
         setFields={setState}
+        submitTitle="Entrar"
+        onSubmitPress={onEntrarPress}
       />
-
-      <View style={{ padding: 8 }}>
-        <Button
-          title="Entrar"
-          onPress={onEntrarPress}
-        />
-      </View>
 
       <Button title="Cadastrar" onPress={() => props.navigation.navigate(ScreenName.FormularioDeCadastro)} />
     </View>

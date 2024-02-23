@@ -108,14 +108,9 @@ class Cadastro extends React.Component {
           <LoginForm
             fields={{ email: this.state.email, senha: this.state.senha }}
             setFields={(newFields) => this.setState(newFields)}
+            submitTitle="Cadastrar"
+            onSubmitPress={this.onCadastrarPress}
           />
-
-          <View style={{ padding: 8 }}>
-            <Button
-              title="Cadastrar"
-              onPress={this.onCadastrarPress}
-            />
-          </View>
         </View>
 
         {this.renderErros()}

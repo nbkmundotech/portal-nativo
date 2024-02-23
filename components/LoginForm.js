@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../styles/styles-global';
-import { View, Text, TextInput } from 'react-native';
+import { Button, View, Text, TextInput } from 'react-native';
 
 export default function LoginForm(props) {
   function onChangeTextField(fieldName) {
@@ -37,6 +37,13 @@ export default function LoginForm(props) {
           value={props.fields.senha}
           onChangeText={onChangeTextField('senha')}
           maxLength={15}
+        />
+      </View>
+
+      <View style={{ padding: 8 }}>
+        <Button
+          title={props.submitTitle}
+          onPress={props.onSubmitPress}
         />
       </View>
     </React.Fragment>
