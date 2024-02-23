@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 import validator from 'validator';
 import { baseUrl } from '../../constants';
 import styles from '../../styles/styles-global';
+import LoginForm from '../../components/LoginForm';
 
 class Cadastro extends React.Component {
   constructor(props) {
@@ -104,31 +105,10 @@ class Cadastro extends React.Component {
             <Text style={styles.titleText}>Nova Conta</Text>
           </View>
 
-          <View style={styles.inputContainer}>
-            <Text style={styles.inputText}>Email</Text>
-            <TextInput
-              style={styles.textInput}
-              underlineColorAndroid="rgba(0, 0, 0, 0)"
-              value={this.state.email}
-              onChangeText={(text) => this.setState({ email: text })}
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
-          </View>
-
-          <View style={styles.inputContainer}>
-            <Text style={styles.inputText}>Senha</Text>
-            <TextInput
-              style={styles.textInput}
-              underlineColorAndroid="rgba(0, 0, 0, 0)"
-              autoCapitalize="none"
-              autoCorrect={false}
-              secureTextEntry
-              value={this.state.senha}
-              onChangeText={(text) => this.setState({ senha: text })}
-              maxLength={15}
-            />
-          </View>
+          <LoginForm
+            fields={{ email: this.state.email, senha: this.state.senha }}
+            setFields={(newFields) => this.setState(newFields)}
+          />
 
           <View style={{ padding: 8 }}>
             <Button

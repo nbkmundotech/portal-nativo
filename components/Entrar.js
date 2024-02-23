@@ -3,6 +3,7 @@ import { Button, View, StyleSheet, Text, TextInput } from 'react-native';
 import ScreenName from '../constants/ScreenName';
 import useAuth from '../hooks/useAuth';
 import styles from '../styles/styles-global';
+import LoginForm from './LoginForm';
 
 export default function Entrar(props) {
   const [state, setState] = React.useState({
@@ -25,31 +26,10 @@ export default function Entrar(props) {
         <Text style={styles.titleText}>Entrar</Text>
       </View>
 
-      <View style={styles.inputContainer}>
-        <Text style={styles.inputText}>Email</Text>
-        <TextInput
-          style={styles.textInput}
-          underlineColorAndroid="rgba(0, 0, 0, 0)"
-          value={state.email}
-          onChangeText={(text) => setState({ ...state, email: text })}
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
-      </View>
-
-      <View style={styles.inputContainer}>
-        <Text style={styles.inputText}>Senha</Text>
-        <TextInput
-          style={styles.textInput}
-          underlineColorAndroid="rgba(0, 0, 0, 0)"
-          autoCapitalize="none"
-          autoCorrect={false}
-          secureTextEntry
-          value={state.senha}
-          onChangeText={(text) => setState({ ...state, senha: text })}
-          maxLength={15}
-        />
-      </View>
+      <LoginForm
+        fields={state}
+        setFields={setState}
+      />
 
       <View style={{ padding: 8 }}>
         <Button
