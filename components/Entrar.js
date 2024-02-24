@@ -20,6 +20,12 @@ export default function Entrar(props) {
     });
   }
 
+  React.useEffect(() => {
+    if (props.route.params && props.route.params.email) {
+      setState({ ...state, email: props.route.params.email });
+    }
+  }, [props.route.params && props.route.params.email]);
+
   return (
     <View>
       <View style={styles.titleContainer}>

@@ -4,6 +4,8 @@ import validator from 'validator';
 import { baseUrl } from '../../constants';
 import styles from '../../styles/styles-global';
 import LoginForm from '../../components/LoginForm';
+import ScreenName from '../../constants/ScreenName';
+import withNavigation from '../../components/withNavigation';
 
 class Cadastro extends React.Component {
   constructor(props) {
@@ -60,11 +62,13 @@ class Cadastro extends React.Component {
       })
         .then(response => response.json())
         .then(responseJson => {
+          const { email } = this.state;
           this.setState({
             mensagem: 'Muito obrigado por se cadastrar! Verique o seu email para os próximos passos',
             email: '',
             senha: '',
           });
+          this.props.navigation.navigate(ScreenName.Entrar, { email });
         })
         .catch(error => {
           this.setState({
@@ -120,4 +124,4 @@ class Cadastro extends React.Component {
   }
 }
 
-export default Cadastro;
+export default withNavigation(Cadastro);
