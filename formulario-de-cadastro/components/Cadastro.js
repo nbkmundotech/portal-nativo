@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Button, Alert } from 'react-native';
 import validator from 'validator';
 import { baseUrl } from '../../constants';
 import styles from '../../styles/styles-global';
@@ -69,6 +69,7 @@ class Cadastro extends React.Component {
             senha: '',
           });
           this.props.navigation.navigate(ScreenName.Entrar, { email });
+          Alert.alert('Mensagem', 'Muito obrigado por se cadastrar! Verique o seu email para os próximos passos');
         })
         .catch(error => {
           this.setState({
