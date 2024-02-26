@@ -18,6 +18,7 @@ import ListaDeTarefas from './lista-de-tarefas/ListaDeTarefas';
 import ListaDeFrutas from './lista-de-frutas/ListaDeFrutas';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Configuracoes from './configuracoes/Configuracoes';
+import { Ionicons } from '@expo/vector-icons';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -43,6 +44,30 @@ function Conteudo(props) {
   );
 }
 
+const icones = {
+  [ScreenName.Conteudo]: {
+    name: 'list-outline',
+    size: 30,
+    color: 'green'
+  },
+  [ScreenName.Configuracoes]: {
+    name: 'settings',
+    size: 24,
+    color: 'red'
+  },
+};
+
+
+function tabNavigatorScreenOptions({ route }) {
+  return {
+    headerShown: false,
+    tabBarIcon: ({ color, size }) => {
+      const icon = icones[route.name];
+      return <Ionicons name={icon.name} size={icon.size || size} color={icon.color || color} />
+    }
+  };
+}
+
 function MyApp() {
   const { autenticado, carregando } = useAuth();
 
@@ -59,9 +84,21 @@ function MyApp() {
       <StatusBar style="auto" />
       <NavigationContainer>
         {autenticado ? (
-          <Tab.Navigator>
-            <Tab.Screen name={ScreenName.Conteudo} component={Conteudo} />
-            <Tab.Screen name={ScreenName.Configuracoes} component={Configuracoes} />
+          <Tab.Navigator screenOptions={tabNavigatorScreenOptions}>
+            <Tab.Screen
+              name={ScreenName.Conteudo}
+              component={Conteudo}
+              options={{
+                title: 'Conteúdo',
+              }}
+            />
+            <Tab.Screen
+              name={ScreenName.Configuracoes}
+              component={Configuracoes}
+              options={{
+                title: 'Configurações',
+              }}
+            />
           </Tab.Navigator>
         ) : (
           <Drawer.Navigator>
