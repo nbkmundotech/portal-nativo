@@ -15,9 +15,19 @@ import React from 'react';
 import useAuth from './hooks/useAuth';
 import stylesGlobal from './styles/styles-global';
 import ListaDeTarefas from './lista-de-tarefas/ListaDeTarefas';
+import ListaDeFrutas from './lista-de-frutas/ListaDeFrutas';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
+
+function Listas(props) {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name={ScreenName.ListaDeTarefas} component={ListaDeTarefas} options={{ title: 'Lista de Tarefas' }} />
+      <Drawer.Screen name={ScreenName.ListaDeFrutas} component={ListaDeFrutas} options={{ title: 'Lista de Frutas' }} />
+    </Drawer.Navigator>
+  );
+}
 
 function MyApp() {
   const { autenticado, carregando } = useAuth();
@@ -39,7 +49,7 @@ function MyApp() {
             <Stack.Screen name={ScreenName.ArcoIris} component={ArcoIris} options={{ title: 'Arco Iris' }} />
             <Stack.Screen name={ScreenName.Home} component={Home} options={{ title: 'Pagina Principal' }} />
             <Stack.Screen name={ScreenName.RevvistaNativva} component={RevvistaNativva} options={{ title: 'Revvista Nativva' }} />
-            <Stack.Screen name={ScreenName.ListaDeTarefas} component={ListaDeTarefas} options={{ title: 'Lista de Tarefas' }} />
+            <Stack.Screen name={ScreenName.Listas} component={Listas} />
           </Stack.Navigator>
         ) : (
           <Drawer.Navigator>
