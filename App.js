@@ -16,9 +16,12 @@ import useAuth from './hooks/useAuth';
 import stylesGlobal from './styles/styles-global';
 import ListaDeTarefas from './lista-de-tarefas/ListaDeTarefas';
 import ListaDeFrutas from './lista-de-frutas/ListaDeFrutas';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Configuracoes from './configuracoes/Configuracoes';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
+const Tab = createBottomTabNavigator();
 
 function Listas(props) {
   return (
@@ -26,6 +29,17 @@ function Listas(props) {
       <Drawer.Screen name={ScreenName.ListaDeTarefas} component={ListaDeTarefas} options={{ title: 'Lista de Tarefas' }} />
       <Drawer.Screen name={ScreenName.ListaDeFrutas} component={ListaDeFrutas} options={{ title: 'Lista de Frutas' }} />
     </Drawer.Navigator>
+  );
+}
+
+function Conteudo(props) {
+  return (
+    <Stack.Navigator initialRouteName={ScreenName.Home}>
+      <Stack.Screen name={ScreenName.ArcoIris} component={ArcoIris} options={{ title: 'Arco Iris' }} />
+      <Stack.Screen name={ScreenName.Home} component={Home} options={{ title: 'Pagina Principal' }} />
+      <Stack.Screen name={ScreenName.RevvistaNativva} component={RevvistaNativva} options={{ title: 'Revvista Nativva' }} />
+      <Stack.Screen name={ScreenName.Listas} component={Listas} />
+    </Stack.Navigator>
   );
 }
 
@@ -45,12 +59,10 @@ function MyApp() {
       <StatusBar style="auto" />
       <NavigationContainer>
         {autenticado ? (
-          <Stack.Navigator initialRouteName={ScreenName.Home}>
-            <Stack.Screen name={ScreenName.ArcoIris} component={ArcoIris} options={{ title: 'Arco Iris' }} />
-            <Stack.Screen name={ScreenName.Home} component={Home} options={{ title: 'Pagina Principal' }} />
-            <Stack.Screen name={ScreenName.RevvistaNativva} component={RevvistaNativva} options={{ title: 'Revvista Nativva' }} />
-            <Stack.Screen name={ScreenName.Listas} component={Listas} />
-          </Stack.Navigator>
+          <Tab.Navigator>
+            <Tab.Screen name={ScreenName.Conteudo} component={Conteudo} />
+            <Tab.Screen name={ScreenName.Configuracoes} component={Configuracoes} />
+          </Tab.Navigator>
         ) : (
           <Drawer.Navigator>
             <Drawer.Screen

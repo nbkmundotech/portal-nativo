@@ -1,5 +1,7 @@
 const ScreenName = Object.freeze({
   ArcoIris: 'ARCO_IRIS',
+  Configuracoes: 'CONFIGURACOES',
+  Conteudo: 'CONTEUDO',
   Entrar: 'ENTRAR',
   FormularioDeCadastro: 'FORMULARIO_DE_CADASTRO',
   Home: 'HOME',
