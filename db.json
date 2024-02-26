@@ -1,4 +1,18 @@
 {
+  "tarefas": [
+    {
+      "texto": "Lavar o carro",
+      "id": "1"
+    },
+    {
+      "texto": "Levar o cachorro para passear",
+      "id": "2"
+    },
+    {
+      "id": "4",
+      "texto": "Lavar as louças de manhã"
+    }
+  ],
   "usuarios": [
     {
       "id": "123456",

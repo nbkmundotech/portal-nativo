@@ -10,6 +10,7 @@ export default function Home(props) {
     <View>
       <Button title="Arco Iris" onPress={() => props.navigation.navigate(ScreenName.ArcoIris)} />
       <Button title="Revvista Nativva" onPress={() => props.navigation.navigate(ScreenName.RevvistaNativva)} />
+      <Button title="Lista de Tarefas" onPress={() => props.navigation.navigate(ScreenName.ListaDeTarefas)} />
       <Button title="Sair" onPress={() => sair()} />
     </View>
   );

@@ -28,10 +28,6 @@ export default function Entrar(props) {
 
   return (
     <View>
-      <View style={styles.titleContainer}>
-        <Text style={styles.titleText}>Entrar</Text>
-      </View>
-
       <LoginForm
         fields={state}
         setFields={setState}

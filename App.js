@@ -13,6 +13,8 @@ import FormularioDeCadastro from './formulario-de-cadastro/FormularioDeCadastro'
 import AuthContextProvider from './context/AuthContextProvider';
 import React from 'react';
 import useAuth from './hooks/useAuth';
+import stylesGlobal from './styles/styles-global';
+import ListaDeTarefas from './lista-de-tarefas/ListaDeTarefas';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -37,10 +39,20 @@ function MyApp() {
             <Stack.Screen name={ScreenName.ArcoIris} component={ArcoIris} options={{ title: 'Arco Iris' }} />
             <Stack.Screen name={ScreenName.Home} component={Home} options={{ title: 'Pagina Principal' }} />
             <Stack.Screen name={ScreenName.RevvistaNativva} component={RevvistaNativva} options={{ title: 'Revvista Nativva' }} />
+            <Stack.Screen name={ScreenName.ListaDeTarefas} component={ListaDeTarefas} options={{ title: 'Lista de Tarefas' }} />
           </Stack.Navigator>
         ) : (
           <Drawer.Navigator>
-            <Drawer.Screen name={ScreenName.Entrar} component={Entrar} />
+            <Drawer.Screen
+              name={ScreenName.Entrar}
+              component={Entrar}
+              options={{
+                title: 'Entrar',
+                headerStyle: { backgroundColor: stylesGlobal.titleContainer.backgroundColor },
+                headerTintColor: "white",
+                headerTitleStyle: { fontWeight: 'bold', fontSize: 18 }
+              }}
+            />
             <Drawer.Screen name={ScreenName.FormularioDeCadastro} component={FormularioDeCadastro} />
           </Drawer.Navigator>
         )}
@@ -60,6 +72,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 40,
   },
 });

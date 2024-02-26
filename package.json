@@ -7,7 +7,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "dev-server": "json-server formulario-de-cadastro/db.json",
+    "dev-server": "json-server db.json",
     "dev-tunnel": "lt --port 3000"
   },
   "dependencies": {
